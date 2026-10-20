@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema } from '../../lib/seo';
+const lang = 'ar';
+const tools = [
+  ['rawatib', 'حاسبة الراتب الصافي', 1150],
+  ['nihayat-alkhidma', 'حاسبة مكافأة نهاية الخدمة', 900],
+  ['hisab-almuwatin', 'تقدير حساب المواطن', 850],
+  ['altaqaud', 'حاسبة التقاعد', 900],
+] as const;
+const code = (slug: string, title: string, h: number) => `<iframe src="${SITE_URL}/embed/${slug}/" title="${title}" width="100%" height="${h}" style="border:0;max-width:900px" loading="lazy"></iframe>`;
+---
+<PageLayout title="ضع حاسبة الراتب ونهاية الخدمة في موقعك مجاناً: كود التضمين" description="ضمّن حاسبة الراتب الصافي أو مكافأة نهاية الخدمة أو تقدير حساب المواطن أو التقاعد في موقعك مجاناً بإطار iframe: انسخ الكود، والأرقام تتحدث من تلقاء نفسها." lang={lang} noindex={true} jsonLd={[breadcrumbSchema([{ name: 'الرئيسية', path: route('home', lang) }, { name: 'التضمين', path: route('widget', lang) }])]} breadcrumbs={[{ label: 'التضمين' }]} showAuthor={false}>
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">ضع الحاسبة في موقعك</h1>
+    <p class="mt-3 text-lg text-navy-700">للمدونات والمنتديات وجمعيات الموظفين: انسخ الكود مرة واحدة، وتتحدث الأرقام عند تحديث السلالم.</p>
+  </header>
+  <div class="prose prose-slate max-w-none">
+    {tools.map(([slug, title, h]) => (<>
+      <h2>{title}</h2>
+      <pre dir="ltr" class="overflow-x-auto rounded-lg bg-navy-900 p-4 text-sm text-white"><code>{code(slug, title, h)}</code></pre>
+    </>))}
+    <p>الشروط: يبقى رابط المصدر تحت الحاسبة ظاهراً، ولا تعدل الحاسبة، وتقدم دون ضمان. ما يكتبه زوارك يبقى في أجهزتهم.</p>
+    <p>أسئلة عبر <a href={route('contact', lang)}>صفحة التواصل</a>.</p>
+  </div>
+  <div class="mt-8 overflow-hidden rounded-xl border border-navy-200">
+    <iframe src="/embed/nihayat-alkhidma/" title="حاسبة مكافأة نهاية الخدمة" width="100%" height="900" style="border:0" loading="lazy"></iframe>
+  </div>
+</PageLayout>

@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'ar';
+const title = `ملفات تعريف الارتباط (cookies) في ${SITE_NAMES[lang]}`;
+const description = GA4_ID ? 'ملفات تعريف الارتباط (cookies) لقياس الزيارات بأداة Google Analytics وحدها: أسماؤها والغرض منها ومدتها التي لا تتجاوز 13 شهراً وطريقة الاعتراض عليها.' : 'لا يضع الموقع أي ملف تعريف ارتباط (cookies): ما تدخله في الحاسبات يبقى في متصفحك، ولا يحفظ في جهازك شيء بعد إغلاق الصفحة.';
+---
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: 'ملفات تعريف الارتباط' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>ملفات تعريف الارتباط (cookies)</h1>
+    {GA4_ID ? (<>
+    <p>يضع الموقع ملفات تعريف ارتباط لقياس الزيارات بأداة Google Analytics وحدها، دون ملفات إعلانية أو ملفات شبكات اجتماعية. التفاصيل في <a href={route('privacy', lang)}>سياسة الخصوصية</a>.</p>
+    <table><thead><tr><th>الاسم</th><th>المزود</th><th>الغرض</th><th>المدة</th></tr></thead><tbody>
+    <tr><td><code>_ga</code></td><td>Google Analytics</td><td>تمييز الزائر بمعرف عشوائي</td><td>13 شهراً على الأكثر</td></tr>
+    <tr><td><code>_ga_{GA4_ID.replace('G-', '')}</code></td><td>Google Analytics</td><td>حفظ حالة الزيارة الجارية</td><td>13 شهراً على الأكثر</td></tr>
+    </tbody></table>
+    <p>للاعتراض: احجب ملفات تعريف الارتباط أو احذفها من إعدادات متصفحك، أو ثبّت <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">إضافة تعطيل Google Analytics</a>. تعمل الحاسبات بعد ذلك كما هي.</p>
+    </>) : (<>
+    <p>الموقع <strong>لا يضع أي ملف تعريف ارتباط (cookies)</strong>، لا لقياس الزيارات ولا للإعلانات. التفاصيل في <a href={route('privacy', lang)}>سياسة الخصوصية</a>.</p>
+    </>)}
+    {CLARITY_ID && (<><h2>Microsoft Clarity دون ملفات تعريف ارتباط</h2><p>يقاس استقرار الصفحات بأداة Microsoft Clarity في وضع لا يضع ملفات تعريف ارتباط، مع إخفاء المحتوى ومدخلاتك. حجب النطاق <code>clarity.ms</code> يوقف القياس.</p></>)}
+    <h2>مدخلاتك</h2>
+    <p>الحسابات تجري في متصفحك: ما تكتبه لا يصل إلى أي خادم، ويختفي عند إغلاق الصفحة.</p>
+    <p>أسئلة: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. آخر تحديث: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

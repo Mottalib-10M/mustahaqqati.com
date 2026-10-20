@@ -1,0 +1,24 @@
+---
+/** Un outil avec les valeurs par défaut de la page. */
+import SalaryCalc from './calc/SalaryCalc';
+import EosCalc from './calc/EosCalc';
+import CaCalc from './calc/CaCalc';
+import PensionCalc from './calc/PensionCalc';
+import MiniResign from './calc/MiniResign';
+import MiniTimeline from './calc/MiniTimeline';
+import MiniFloor from './calc/MiniFloor';
+import { route } from '../i18n/routes';
+import type { ToolDef } from '../lib/guide-types';
+interface Props { tool: ToolDef; primary?: boolean; idPrefix?: string }
+const { tool, primary = false, idPrefix } = Astro.props;
+const props = (tool.props ?? {}) as Record<string, any>;
+const methodHref = route('method', 'ar');
+const id = idPrefix ?? (primary ? 'r' : 'm');
+---
+{tool.kind === 'salary' && <SalaryCalc client:load {...props} methodHref={methodHref} idPrefix={id} />}
+{tool.kind === 'eos' && <EosCalc client:load {...props} methodHref={methodHref} idPrefix={id} />}
+{tool.kind === 'ca' && <CaCalc client:load {...props} methodHref={methodHref} idPrefix={id} />}
+{tool.kind === 'pension' && <PensionCalc client:load {...props} methodHref={methodHref} idPrefix={id} />}
+{tool.kind === 'resign' && <MiniResign client:load {...props} idPrefix={id} fullHref={route('nihayat-alkhidma', 'ar')} />}
+{tool.kind === 'timeline' && <MiniTimeline client:load {...props} idPrefix={id} fullHref={route('home', 'ar')} />}
+{tool.kind === 'floor' && <MiniFloor client:load {...props} idPrefix={id} fullHref={route('hasibat-altaqaud', 'ar')} />}

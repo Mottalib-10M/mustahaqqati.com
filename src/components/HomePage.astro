@@ -1,0 +1,86 @@
+---
+/**
+ * Accueil : les quatre calculs derrière des onglets au premier écran, puis les repères datés, le barème
+ * général en un tableau, ce qui change en 1448, les sources et toutes les pages (RECETTE §5, §21).
+ * Chaque chiffre vient du fichier de paramètres et du moteur.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import HomeHub from './calc/HomeHub';
+import { route } from '../i18n/routes';
+import { PAGES } from '../lib/guides';
+import { groupLabel, GROUPS_ORDER } from '../i18n/nav';
+import { helpers } from '../lib/helpers';
+import { LAST_UPDATED, AUTHOR_NAME } from '../data/site-config';
+import { faqSchema, webApplicationSchema, websiteSchema, organizationSchema } from '../lib/seo';
+const lang = 'ar';
+const h = helpers(true);
+const { P, m, pc, date, hdate, src } = h;
+const N = P.pension.newLaw;
+const eos10 = h.EOS.eos({ wage: 10000, years: 10, reason: 'employer' });
+const ca13 = h.CA.ca({ adults: 1, children: 3, income: 8000 });
+const faqs = [
+  { q: 'هل سلم الرواتب المعروض هنا هو المعمول به في 1448؟', a: `نعم. سلم الموظفين العام هو المعتمد بالأمر ${P.general.decree} في ${P.general.from_hijri.split('-').reverse().join('/')}هـ، ولم تتغير أرقامه بعده في النسخ الرسمية التي قابلناها، آخرها نسخة نشرت في ديسمبر 2024. وسلم المعلمين هو الملحق بلائحة الوظائف التعليمية المعمول بها منذ ${P.teachers.from_hijri.split('-').reverse().join('/')}هـ. نراجع المصدرين عند كل تعديل نظامي.` },
+  { q: 'هل أحتاج إلى تسجيل أو رقم جوال لاستخدام الحاسبات؟', a: 'لا. الحاسبات الأربع تعمل في متصفحك دون حساب ولا نموذج ولا رقم جوال، وما تكتبه لا يرسل إلى أي خادم. إن أردت حفظ نتيجة أو مشاركتها فزر النسخ يضع مدخلاتك في رابط الصفحة نفسه، ولا يحفظ لدينا شيء منها. ولا نعرض نموذج طلب أو تواصل من بنك أو مكتب.' },
+  { q: 'لماذا تختلف حاسبتكم لنهاية الخدمة عن مواقع أخرى؟', a: `لأننا نطبق نص المادة 84 من نظام العمل على الأجر الأخير، ونأخذه أجراً فعلياً يشمل البدلات المقررة كما تعرفه المادة الثانية. بعض المواقع تحسب على الراتب الأساسي وحده، فتخرج المكافأة أقل. لعامل أجره الفعلي ${m(10000)} أنهى صاحب العمل عقده بعد عشر سنوات تكون المكافأة ${m(eos10.amount)}.` },
+  { q: 'هل تقدير حساب المواطن هنا ملزم للبرنامج؟', a: 'لا. البرنامج لا ينشر معادلته، وما نعرضه يعيد نتائج حاسبته التقديرية الرسمية في الحالات التي اختبرناها. الأهلية والمبلغ يقررهما البرنامج بعد التحقق من الدخل والبيانات الأخرى. استعمل التقدير لتفهم أثر الدخل وعدد التابعين، لا لتبني عليه التزاماً مالياً، وراجع حسابك في البرنامج نفسه.' },
+  { q: 'أي حاسبة أستعمل إن كنت معلماً؟', a: `حاسبة الراتب في أعلى الصفحة فيها خيار المعلمين: اختر الرتبة والمستوى والدرجة، فتحسب الأساسي من سلم الوظائف التعليمية، وتضيف بدل النقل بحسب المرتبة المقابلة في المادة 30 من لائحة الوظائف التعليمية، وتحسم التقاعد. المعلم الممارس المعين بشهادة تربوية يبدأ من ${m(h.tch('mumaris', 1, 2))} أساسياً.` },
+  { q: 'هل تصلح حاسبة نهاية الخدمة لموظفي الدولة؟', a: 'لا. حاسبة نهاية الخدمة هنا تطبق نظام العمل، أي على العاملين في القطاع الخاص ومن يخضع لهذا النظام. موظفو الدولة الخاضعون لنظام الخدمة المدنية لهم أحكام أخرى عند انتهاء الخدمة لم ندرجها بعد، ولذلك لا نعرض لهم رقماً. لموظف الدولة تفيده حاسبة التقاعد المدني أكثر.' },
+];
+const jsonLd = [webApplicationSchema({ name: 'حاسبات مستحقاتي', description: 'سلم الرواتب الحكومية، مكافأة نهاية الخدمة، تقدير حساب المواطن والتقاعد.', path: route('home', lang), lang }), websiteSchema(lang), organizationSchema(lang), faqSchema(faqs, lang)];
+const groups = GROUPS_ORDER.map((g) => ({ g, pages: PAGES.filter((p) => p.group === g).sort((a, b) => a.order - b.order) })).filter((x) => x.pages.length);
+const nSrc = Object.keys(P.sources).length;
+const facts: Array<[string, string, string]> = [
+  ['سلم الموظفين العام', `${P.general.from_hijri.split('-').reverse().join('/')}هـ`, `الأمر ${P.general.decree}، من ${m(h.g(1, 1))} إلى ${m(h.g(15, 10))}`],
+  ['المرتبة الثامنة، الدرجة الأولى', m(h.g(8, 1)), `نحو ${m(h.netG(8, 1).net)} صافياً مع بدل النقل`],
+  ['المعلم الممارس بشهادة تربوية', m(h.tch('mumaris', 1, 2)), 'الدرجة الثانية من المستوى الأول عند التعيين'],
+  ['العلاوة السنوية القادمة', '1/1/1449هـ', `الموافق ${date('2027-06-06')}`],
+  ['نهاية الخدمة بعد 10 سنوات', m(eos10.amount), `لأجر فعلي ${m(10000)}، أو كاملة عند الاستقالة`],
+  ['اشتراك التأمينات الجديد اليوم', pc(h.SAL.newLawRate(h.TODAY)), `يتحمل الموظف نصفه، حتى ${pc(N.rates[N.rates.length - 1].total)}`],
+];
+---
+<PageLayout title="سلم الرواتب ونهاية الخدمة وحساب المواطن والتقاعد 1448" description="سلم رواتب الموظفين والمعلمين بتاريخ اعتماده، ومكافأة نهاية الخدمة حسب نظام العمل، وتقدير حساب المواطن والمعاش التقاعدي، في حاسبات مجانية بلا أي تسجيل." lang={lang} jsonLd={jsonLd} faqs={faqs}>
+  <header class="mb-3">
+    <h1 class="text-[1.75rem] font-bold text-navy-900 max-sm:leading-tight sm:text-3xl md:text-4xl">راتبك ونهاية خدمتك وتقاعدك بأرقام النظام</h1>
+    <p class="mt-2 text-base text-navy-700 sm:text-lg">أربع حاسبات من نصوص رسمية مؤرخة: الصافي حسب المرتبة أو رتبة المعلم، مكافأة نهاية الخدمة، تقدير حساب المواطن، والمعاش.</p>
+  </header>
+  <div data-outil class="mb-4"><HomeHub client:load methodHref={route('method', lang)} /></div>
+  <p class="mb-8 text-sm text-navy-600">السلالم المعمول بها في {hdate(h.TODAY)} · آخر تحديث (last updated) <time datetime={LAST_UPDATED}>{date(LAST_UPDATED)}</time> · {AUTHOR_NAME} · <a href={route('method', lang)} class="underline hover:text-navy-900">طريقة الحساب</a> · <a href={route('about', lang)} class="underline hover:text-navy-900">من نحن</a></p>
+
+  <div class="prose prose-slate max-w-none">
+    <p>هذا الموقع أفضل من أول نتيجة في Google لأن الجداول التي تتصدر البحث عن سلم الرواتب لا تذكر تاريخ اعتمادها ولا مصدرها، وبعضها يخالف بعضاً في المرتبة نفسها، ولأن أشهر شروح نهاية الخدمة تحسبها على الراتب الأساسي وحده. هنا كل رقم مأخوذ من نصه الرسمي ومؤرخ بالهجري والميلادي: سلم الموظفين المعتمد بالأمر {P.general.decree}، وسلم المعلمين الملحق بلائحة الوظائف التعليمية، والمواد 84 إلى 88 من نظام العمل على الأجر الفعلي الأخير، وأنظمة التقاعد الثلاثة مع نظام التأمينات الجديد النافذ منذ {date(N.from)}. وحين لا تنشر جهة رسمية قاعدتها، كما في حساب المواطن، نقول ذلك صراحة ونعرض تقديراً يعيد نتائج حاسبتها الرسمية. لا نطلب اسماً ولا رقم جوال، ولا نحيلك إلى بنك أو مكتب، والحساب كله يجري في جهازك. وكل صفحة تذكر ما لا تعرفه: سلم العسكريين غير منشور هنا لأننا لم نجد نسخته الرسمية الحالية، وما أعلن من زيادات ولم ينشر نصه يبقى خارج الحساب حتى يصدر.</p>
+  </div>
+
+  <section class="not-prose my-10" aria-labelledby="keys-title">
+    <h2 id="keys-title" class="text-2xl font-bold text-navy-900">ستة أرقام تبدأ بها</h2>
+    <dl class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {facts.map(([t, v, s]) => <div class="border-s-4 border-accent-500 ps-4"><dt class="text-sm text-navy-600">{t}</dt><dd class="text-xl font-semibold text-navy-900">{v}</dd><dd class="text-sm text-navy-700">{s}</dd></div>)}
+    </dl>
+  </section>
+
+  <section class="not-prose my-10" aria-labelledby="scale-title">
+    <h2 id="scale-title" class="text-2xl font-bold text-navy-900">السلم العام في جدول واحد</h2>
+    <p class="mt-2 max-w-3xl text-navy-700">أول درجة وآخر درجة والعلاوة وبدل النقل لكل مرتبة. اضغط على المرتبة لترى درجاتها كلها مع الصافي.</p>
+    <Fragment set:html={h.generalFullTable()} />
+  </section>
+
+  <div class="prose prose-slate max-w-none">
+    <h2>ما الذي يتغير في 1448</h2>
+    <p>أرقام السلمين لم تتغير، لكن راتب كل موظف يتحرك: العلاوة السنوية تنقله درجة في أول محرم، وقد استحقت آخر مرة في {date('2026-06-16')} وتستحق القادمة في {date('2027-06-06')}. ومن عُيّن بعد {date(N.from)} يخضع لنظام التأمينات الاجتماعية الجديد، ونسبة اشتراكه ترتفع نقطة كل سنة من {pc(N.rates[0].total)} حتى {pc(N.rates[N.rates.length - 1].total)}، فينقص صافيه قليلاً كل عام. وفي حساب المواطن مدد الدعم الإضافي حتى نهاية 2026، وما بعده لم يعلن بعد، فهو قادم ولا نخمنه.</p>
+    <h2>مثال من حساب المواطن</h2>
+    <p>أسرة فيها رب الأسرة وزوجة وثلاثة أطفال دون 18 سنة، دخلها الشهري {m(8000)}: التقدير الذي يعيد الحاسبة الرسمية {m(ca13.support)} في الشهر. لو ارتفع الدخل إلى {m(12000)} لأصبح {m(h.CA.ca({ adults: 1, children: 3, income: 12000 }).support)}. القاعدة المستنتجة وحدودها في <a href={route('method', lang)}>طريقة الحساب</a>، والقرار للبرنامج وحده.</p>
+    <h2>من أين تأتي الأرقام</h2>
+    <p>السلم العام من <Fragment set:html={src('iauGeneral', 'نسخة رسمية منشورة لدى جامعة الإمام عبدالرحمن بن فيصل')} /> مقابلة بنسخة جامعة الأمير سطام؛ سلم المعلمين من <Fragment set:html={src('moeTeachers', 'وزارة التعليم')} />؛ البدلات من <Fragment set:html={src('moeHuquq', 'لائحة الحقوق والمزايا المالية')} />؛ نهاية الخدمة من <Fragment set:html={src('boeLabor', 'نظام العمل في موقع هيئة الخبراء')} />؛ التقاعد من <Fragment set:html={src('boeSocialNew', 'نظام التأمينات الاجتماعية')} /> و<Fragment set:html={src('boeCivilPension', 'نظام التقاعد المدني')} />؛ حساب المواطن من <Fragment set:html={src('caCalculator', 'الحاسبة التقديرية الرسمية')} />. المجموع {h.num(nSrc)} مصدراً رسمياً، كل منها مذكور في الصفحات التي تستعمله. لا ننشر سلم العسكريين لأننا لم نجد نسخته الحالية في مصدر رسمي.</p>
+  </div>
+
+  <section class="mt-12" aria-labelledby="guides-title">
+    <h2 id="guides-title" class="text-2xl font-bold text-navy-900">كل الحاسبات والجداول</h2>
+    <div class="mt-4 grid gap-x-10 gap-y-6 md:grid-cols-2">
+      {groups.map(({ g, pages }) => (
+        <div>
+          <h3 class="border-b border-navy-200 pb-1 text-sm font-semibold text-navy-600">{groupLabel(g)}</h3>
+          <ul class="mt-2 space-y-2">{pages.map((p) => <li><a href={route(p.id, lang)} class="font-medium text-accent-700 underline-offset-2 hover:underline">{p.nav}</a><span class="block text-sm text-navy-600">{p.card}</span></li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,21 @@
+{
+ "name": "مستحقاتي",
+ "short_name": "مستحقاتي",
+ "description": "سلم رواتب الموظفين والمعلمين بتاريخ اعتماده، مكافأة نهاية الخدمة حسب المادتين 84 و85 من نظام العمل، وتقدير حساب المواطن والتقاعد، دون تسجيل.",
+ "start_url": "/ar/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#006C35",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

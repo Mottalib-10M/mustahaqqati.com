@@ -1,0 +1,19 @@
+---
+/**
+ * Chapeau replié (RECETTE §26, 2026-10-02) : UN <p> entier dans le HTML ; l'écran montre la première phrase
+ * et le reste est dans un <span> caché du même <p>, déplié par une case à cocher, sans JavaScript. Jamais
+ * coupé au milieu d'une phrase, jamais de <details> : check-seo doit trouver le bloc de 120 mots dans les
+ * premiers 30 % de la page (§21). L'arabe n'a pas de majuscules : on coupe après « . » ou « ؟ » suivi d'une espace.
+ */
+import { t } from '../i18n/ui';
+interface Props { text: string; id: string; sentences?: number; class?: string }
+const { text, id, sentences = 1, class: cls = '' } = Astro.props;
+const parts = text.split(/(?<=[.!؟])\s+(?=[؀-ۿ])/u);
+const head = parts.slice(0, sentences).join(' ').trim();
+const rest = parts.slice(sentences).join(' ').trim();
+---
+<div class={`clamp ${cls}`}>
+  {rest && <input type="checkbox" id={id} class="clamp-toggle" />}
+  <p class="text-navy-800"><Fragment set:html={head} />{rest && <span class="clamp-rest"> <Fragment set:html={rest} /></span>}</p>
+  {rest && <label for={id} class="clamp-more">{t('ar').readMore}</label>}
+</div>

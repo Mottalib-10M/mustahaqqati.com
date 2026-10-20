@@ -1,0 +1,755 @@
+{
+ "retrieved_at": "2026-10-20",
+ "today": "2026-10-20",
+ "hijriToday": "1448-05-09",
+ "general": {
+  "decree": "4097/م ب",
+  "from_hijri": "1432-06-25",
+  "from": "2011-05-28",
+  "grades": {
+   "1": {
+    "first": 3000,
+    "inc": 135,
+    "steps": 15
+   },
+   "2": {
+    "first": 3430,
+    "inc": 165,
+    "steps": 15
+   },
+   "3": {
+    "first": 3945,
+    "inc": 190,
+    "steps": 15
+   },
+   "4": {
+    "first": 4530,
+    "inc": 230,
+    "steps": 15
+   },
+   "5": {
+    "first": 5240,
+    "inc": 265,
+    "steps": 15
+   },
+   "6": {
+    "first": 6065,
+    "inc": 305,
+    "steps": 15
+   },
+   "7": {
+    "first": 7010,
+    "inc": 365,
+    "steps": 15
+   },
+   "8": {
+    "first": 8010,
+    "inc": 415,
+    "steps": 15
+   },
+   "9": {
+    "first": 9275,
+    "inc": 470,
+    "steps": 15
+   },
+   "10": {
+    "first": 10275,
+    "inc": 510,
+    "steps": 15
+   },
+   "11": {
+    "first": 11815,
+    "inc": 530,
+    "steps": 14
+   },
+   "12": {
+    "first": 13435,
+    "inc": 570,
+    "steps": 13
+   },
+   "13": {
+    "first": 15180,
+    "inc": 605,
+    "steps": 12
+   },
+   "14": {
+    "first": 17015,
+    "inc": 700,
+    "steps": 11
+   },
+   "15": {
+    "first": 20855,
+    "inc": 865,
+    "steps": 10
+   }
+  }
+ },
+ "teachers": {
+  "from_hijri": "1441-11-10",
+  "from": "2020-07-01",
+  "ranks": {
+   "musaid": {
+    "levels": [
+     {
+      "first": 5200,
+      "inc": 300,
+      "steps": 6
+     },
+     {
+      "first": 7000,
+      "inc": 320,
+      "steps": 6
+     },
+     {
+      "first": 8920,
+      "inc": 340,
+      "steps": 6
+     },
+     {
+      "first": 10960,
+      "inc": 360,
+      "steps": 6
+     },
+     {
+      "first": 13120,
+      "inc": 380,
+      "steps": 6
+     },
+     {
+      "first": 15400,
+      "inc": 400,
+      "steps": 6
+     }
+    ]
+   },
+   "mumaris": {
+    "levels": [
+     {
+      "first": 7570,
+      "inc": 500,
+      "steps": 6
+     },
+     {
+      "first": 10570,
+      "inc": 520,
+      "steps": 6
+     },
+     {
+      "first": 13690,
+      "inc": 540,
+      "steps": 6
+     },
+     {
+      "first": 16930,
+      "inc": 540,
+      "steps": 6
+     },
+     {
+      "first": 20170,
+      "inc": 540,
+      "steps": 3
+     }
+    ]
+   },
+   "mutaqaddim": {
+    "levels": [
+     {
+      "first": 9950,
+      "inc": 540,
+      "steps": 6
+     },
+     {
+      "first": 13190,
+      "inc": 560,
+      "steps": 6
+     },
+     {
+      "first": 16550,
+      "inc": 580,
+      "steps": 6
+     },
+     {
+      "first": 20030,
+      "inc": 580,
+      "steps": 4
+     }
+    ]
+   },
+   "khabir": {
+    "levels": [
+     {
+      "first": 12650,
+      "inc": 600,
+      "steps": 6
+     },
+     {
+      "first": 16250,
+      "inc": 620,
+      "steps": 6
+     },
+     {
+      "first": 19970,
+      "inc": 640,
+      "steps": 6
+     }
+    ]
+   }
+  },
+  "equiv": {
+   "musaid": [
+    5,
+    6,
+    7,
+    7,
+    8,
+    8
+   ],
+   "mumaris": [
+    7,
+    8,
+    9,
+    9,
+    10
+   ],
+   "mutaqaddim": [
+    8,
+    9,
+    10,
+    11
+   ],
+   "khabir": [
+    10,
+    11,
+    12
+   ]
+  },
+  "names": {
+   "musaid": "مساعد معلم / معلم",
+   "mumaris": "معلم ممارس",
+   "mutaqaddim": "معلم متقدم",
+   "khabir": "معلم خبير"
+  }
+ },
+ "transport": [
+  {
+   "from": 1,
+   "to": 5,
+   "amount": 500
+  },
+  {
+   "from": 6,
+   "to": 10,
+   "amount": 700
+  },
+  {
+   "from": 11,
+   "to": 13,
+   "amount": 900
+  },
+  {
+   "from": 14,
+   "to": 14,
+   "amount": 1200
+  }
+ ],
+ "mission": [
+  {
+   "from": 1,
+   "to": 3,
+   "amount": 150
+  },
+  {
+   "from": 4,
+   "to": 5,
+   "amount": 200
+  },
+  {
+   "from": 6,
+   "to": 6,
+   "amount": 320
+  },
+  {
+   "from": 7,
+   "to": 8,
+   "amount": 400
+  },
+  {
+   "from": 9,
+   "to": 11,
+   "amount": 600
+  },
+  {
+   "from": 12,
+   "to": 13,
+   "amount": 700
+  },
+  {
+   "from": 14,
+   "to": 15,
+   "amount": 800
+  }
+ ],
+ "missionAbroad": [
+  {
+   "from": 1,
+   "to": 3,
+   "c": 248,
+   "b": 270,
+   "a": 293,
+   "high": 315
+  },
+  {
+   "from": 4,
+   "to": 5,
+   "c": 330,
+   "b": 360,
+   "a": 390,
+   "high": 420
+  },
+  {
+   "from": 6,
+   "to": 6,
+   "c": 528,
+   "b": 576,
+   "a": 624,
+   "high": 672
+  },
+  {
+   "from": 7,
+   "to": 8,
+   "c": 660,
+   "b": 720,
+   "a": 780,
+   "high": 840
+  },
+  {
+   "from": 9,
+   "to": 11,
+   "c": 990,
+   "b": 1080,
+   "a": 1170,
+   "high": 1260
+  },
+  {
+   "from": 12,
+   "to": 13,
+   "c": 1155,
+   "b": 1260,
+   "a": 1365,
+   "high": 1470
+  },
+  {
+   "from": 14,
+   "to": 15,
+   "c": 1320,
+   "b": 1440,
+   "a": 1560,
+   "high": 1680
+  }
+ ],
+ "missionRules": {
+  "housedFed": 0.25,
+  "housed": 0.5,
+  "extraTransportShare": 0.03333333333333333,
+  "abroadTransport1415": 300,
+  "maxDays": 60,
+  "yearCap551": 30
+ },
+ "pension": {
+  "civil": {
+   "employee": 0.09,
+   "state": 0.09,
+   "divisor": 40,
+   "maxYears": 40,
+   "age": 60,
+   "serviceYears": 25,
+   "minServiceAt60": 10
+  },
+  "military": {
+   "employee": 0.09,
+   "state": 0.13,
+   "divisor": 35
+  },
+  "privateOld": {
+   "employee": 0.09,
+   "employer": 0.09,
+   "divisor": 40,
+   "avgMonths": 24,
+   "age": 60,
+   "ageWomen": 55,
+   "minMonths": 120,
+   "earlyMonths": 300,
+   "minPensionLaw": 1500
+  },
+  "newLaw": {
+   "from": "2024-07-03",
+   "from_hijri": "1445-12-27",
+   "decree": "م/273",
+   "decreeDate_hijri": "1445-12-26",
+   "accrual": 0.0225,
+   "bestMonths": 180,
+   "maxRatio": 1,
+   "age": 65,
+   "minMonths": 180,
+   "earlyMonths": 360,
+   "earlyMaxMonths": 120,
+   "earlyCutPerYear": 0.03,
+   "lateBonusPerYear": 0.03,
+   "minPensionFull": 4000,
+   "minPensionFullMonths": 480,
+   "minPensionAtMin": 2000,
+   "ceiling": 45000,
+   "rates": [
+    {
+     "afterMonths": 0,
+     "total": 0.18
+    },
+    {
+     "afterMonths": 12,
+     "total": 0.19
+    },
+    {
+     "afterMonths": 24,
+     "total": 0.2
+    },
+    {
+     "afterMonths": 36,
+     "total": 0.21
+    },
+    {
+     "afterMonths": 48,
+     "total": 0.22
+    }
+   ],
+   "saned": 0.015,
+   "transitionAge": [
+    [
+     29,
+     776
+    ],
+    [
+     30,
+     772
+    ],
+    [
+     31,
+     768
+    ],
+    [
+     32,
+     764
+    ],
+    [
+     33,
+     760
+    ],
+    [
+     34,
+     756
+    ],
+    [
+     35,
+     752
+    ],
+    [
+     36,
+     748
+    ],
+    [
+     37,
+     744
+    ],
+    [
+     38,
+     740
+    ],
+    [
+     39,
+     736
+    ],
+    [
+     40,
+     732
+    ],
+    [
+     41,
+     728
+    ],
+    [
+     42,
+     724
+    ],
+    [
+     43,
+     720
+    ],
+    [
+     44,
+     716
+    ],
+    [
+     45,
+     712
+    ],
+    [
+     46,
+     708
+    ],
+    [
+     47,
+     704
+    ],
+    [
+     48,
+     700
+    ]
+   ],
+   "transitionEarly": [
+    [
+     180,
+     191,
+     348
+    ],
+    [
+     192,
+     203,
+     336
+    ],
+    [
+     204,
+     215,
+     324
+    ],
+    [
+     216,
+     227,
+     312
+    ],
+    [
+     228,
+     239,
+     300
+    ]
+   ]
+  }
+ },
+ "eos": {
+  "halfMonthYears": 5,
+  "resignation": [
+   {
+    "from": 0,
+    "to": 2,
+    "share": 0
+   },
+   {
+    "from": 2,
+    "to": 5,
+    "share": 0.3333333333333333
+   },
+   {
+    "from": 5,
+    "to": 10,
+    "share": 0.6666666666666666
+   },
+   {
+    "from": 10,
+    "to": 999,
+    "share": 1
+   }
+  ],
+  "monthDays": 30
+ },
+ "ca": {
+  "observed": "2026-10-20",
+  "base": 720,
+  "adultW": 0.5,
+  "childW": 0.3,
+  "capW": 2.9,
+  "taper": 4310,
+  "stop": 6857,
+  "stopCap": 20001,
+  "slope": 0.2826855123674912,
+  "floor": 400,
+  "extraUntil": "2026-12-31",
+  "checks": [
+   {
+    "adults": 0,
+    "children": 0,
+    "income": 0,
+    "support": 720
+   },
+   {
+    "adults": 1,
+    "children": 0,
+    "income": 0,
+    "support": 1080
+   },
+   {
+    "adults": 0,
+    "children": 1,
+    "income": 0,
+    "support": 936
+   },
+   {
+    "adults": 0,
+    "children": 6,
+    "income": 0,
+    "support": 2016
+   },
+   {
+    "adults": 4,
+    "children": 0,
+    "income": 0,
+    "support": 2088
+   },
+   {
+    "adults": 0,
+    "children": 0,
+    "income": 5200,
+    "support": 468
+   },
+   {
+    "adults": 0,
+    "children": 0,
+    "income": 5450,
+    "support": 400
+   },
+   {
+    "adults": 0,
+    "children": 0,
+    "income": 6857,
+    "support": 0
+   },
+   {
+    "adults": 4,
+    "children": 0,
+    "income": 14000,
+    "support": 1736
+   }
+  ],
+  "thresholds": [
+   {
+    "adults": 0,
+    "children": 0,
+    "taper": 4310,
+    "stop": 6857
+   },
+   {
+    "adults": 1,
+    "children": 0,
+    "taper": 6465,
+    "stop": 10285
+   },
+   {
+    "adults": 0,
+    "children": 1,
+    "taper": 5603,
+    "stop": 8914
+   },
+   {
+    "adults": 0,
+    "children": 6,
+    "taper": 12068,
+    "stop": 19199
+   }
+  ]
+ },
+ "sources": {
+  "iauGeneral": {
+   "label": {
+    "ar": "سلم رواتب الموظفين العام المعتمد بالأمر الكريم رقم (4097/م ب) وتاريخ 1432/6/25هـ، نسخة الإدارة العامة للموارد البشرية بجامعة الإمام عبدالرحمن بن فيصل"
+   },
+   "url": "https://www.iau.edu.sa/sites/default/files/resources/employees_general_salaries_0.pdf"
+  },
+  "psauGeneral": {
+   "label": {
+    "ar": "سلم رواتب الموظفين، نسخة عمادة الموارد البشرية بجامعة الأمير سطام بن عبدالعزيز (ديسمبر 2024)"
+   },
+   "url": "https://www.psau.edu.sa/dhr//sitesuploads/dhr/2024-12/%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%85%D9%88%D8%B8%D9%81%D9%8A%D9%86.pdf"
+  },
+  "spa1432": {
+   "label": {
+    "ar": "واس، 26/6/1432هـ: اعتماد 18 سلماً وجدولاً لرواتب الموظفين المدنيين اعتباراً من 25/6/1432هـ"
+   },
+   "url": "https://www.spa.gov.sa/897663"
+  },
+  "moeTeachers": {
+   "label": {
+    "ar": "سلم رواتب وعلاوات الوظائف التعليمية، وزارة التعليم"
+   },
+   "url": "https://www.moe.gov.sa/ar/aboutus/aboutministry/RPRLibrary/%D8%B3%D9%84%D9%85%20%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf"
+  },
+  "spaTeachers": {
+   "label": {
+    "ar": "واس، 8/11/1441هـ: بدء العمل بلائحة الوظائف التعليمية في 10/11/1441هـ"
+   },
+   "url": "https://www.spa.gov.sa/2103364"
+  },
+  "hrsdTeachers": {
+   "label": {
+    "ar": "لائحة الوظائف التعليمية، وزارة الموارد البشرية والتنمية الاجتماعية"
+   },
+   "url": "https://www.hrsd.gov.sa/sites/default/files/2024-05/%D9%84%D8%A7%D8%A6%D8%AD%D8%A9%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9.pdf"
+  },
+  "moeHuquq": {
+   "label": {
+    "ar": "لائحة الحقوق والمزايا المالية (طبعة 1439هـ)، مكتبة وزارة التعليم"
+   },
+   "url": "https://www.moe.gov.sa/en/aboutus/aboutministry/RPRLibrary/%D9%84%D8%A7%D9%8A%D9%94%D8%AD%D8%A9%20%D8%A7%D9%84%D8%AD%D9%82%D9%88%D9%82%20%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D9%8A%D8%A7%20-%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9.pdf"
+  },
+  "boeLabor": {
+   "label": {
+    "ar": "نظام العمل (المرسوم الملكي م/51 وتاريخ 23/8/1426هـ وتعديلاته)، هيئة الخبراء بمجلس الوزراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1"
+  },
+  "boeCivilService": {
+   "label": {
+    "ar": "نظام الخدمة المدنية (المرسوم الملكي م/49 وتاريخ 10/7/1397هـ)، هيئة الخبراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/32f651e6-2976-439c-b418-a9a700f23fb2/1"
+  },
+  "boeSocialNew": {
+   "label": {
+    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/273 وتاريخ 26/12/1445هـ)، هيئة الخبراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1"
+  },
+  "boeSocialOld": {
+   "label": {
+    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/33 وتاريخ 3/9/1421هـ)، هيئة الخبراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8ff3cd90-e466-4bf9-a071-a9a700f2a70d/1"
+  },
+  "boeCivilPension": {
+   "label": {
+    "ar": "نظام التقاعد المدني (المرسوم الملكي م/41 وتاريخ 29/7/1393هـ)، هيئة الخبراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/859d4e56-627b-4766-a7aa-a9a700f23975/1"
+  },
+  "boeMilPension": {
+   "label": {
+    "ar": "نظام التقاعد العسكري (المرسوم الملكي م/24 وتاريخ 5/4/1395هـ)، هيئة الخبراء"
+   },
+   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0838afd4-ca76-4b4a-b1d1-a9a700f22afd/1"
+  },
+  "caCalculator": {
+   "label": {
+    "ar": "الحاسبة التقديرية لبرنامج حساب المواطن"
+   },
+   "url": "https://portal.ca.gov.sa/calculator"
+  },
+  "spaCa2026": {
+   "label": {
+    "ar": "واس، 11/6/1447هـ: تمديد الدعم الإضافي لحساب المواطن حتى نهاية 2026م"
+   },
+   "url": "https://spa.gov.sa/N2457029"
+  },
+  "spaCaOct": {
+   "label": {
+    "ar": "واس، 30/4/1448هـ: إيداع دفعة أكتوبر 2026 لحساب المواطن"
+   },
+   "url": "https://www.spa.gov.sa/N2698253"
+  }
+ }
+}

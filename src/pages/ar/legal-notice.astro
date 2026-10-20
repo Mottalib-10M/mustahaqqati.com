@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, SITE_URL, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'ar';
+---
+<PageLayout title={`الإشعار القانوني لموقع ${SITE_NAMES[lang]}: الناشر والاستضافة`} description="من ينشر حاسبات الرواتب ونهاية الخدمة وحساب المواطن والتقاعد في مستحقاتي، ومن يستضيف الموقع، وحدود المسؤولية، وشروط تضمين الحاسبة في موقع آخر." lang={lang} noindex={true} breadcrumbs={[{ label: 'الإشعار القانوني' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>الإشعار القانوني</h1>
+    <p>بيانات الناشر لموقع {SITE_URL}.</p>
+    <h2>الناشر</h2>
+    <LegalIdentity lang={lang} />
+    <h2>المسؤول عن المحتوى</h2>
+    <p>{AUTHOR_NAME}، على العنوان أعلاه، البريد <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>الاستضافة</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>موضوع الموقع</h2>
+    <p>يحسب الموقع الرواتب وفق سلالم الرواتب الحكومية المنشورة، ومكافأة نهاية الخدمة وفق نظام العمل، وتقدير دعم حساب المواطن، والمعاش التقاعدي وفق أنظمة التقاعد والتأمينات الاجتماعية. <strong>ليس الموقع جهة حكومية</strong>، ولا يتبع وزارة الموارد البشرية ولا وزارة التعليم ولا برنامج حساب المواطن ولا المؤسسة العامة للتأمينات الاجتماعية، ولا يمثل صاحب عمل أو بنكاً أو مكتب محاماة. ما يعرضه تقدير لا يغني عن مسير الراتب أو قرار الجهة المختصة. طريقة الحساب في صفحة <a href={route('method', lang)}>طريقة الحساب</a>.</p>
+    <h2>المسؤولية</h2>
+    <p>نراجع الأرقام مقابل مصادرها الرسمية ونختبر محرك الحساب آلياً قبل كل نشر، لكننا لا نضمن خلوها من الخطأ. المواقع المرتبطة مسؤولية أصحابها. أبلغنا عن أي خطأ عبر <a href={route('contact', lang)}>صفحة التواصل</a>.</p>
+    <h2>التضمين في موقع آخر</h2>
+    <p>يجوز تضمين الحاسبة مجاناً في إطار iframe بشرط بقاء رابط المصدر ظاهراً: <a href={route('widget', lang)}>ضع الحاسبة في موقعك</a>.</p>
+    {/* gen-legal-pages:terms */}
+    <h2>الخصوصية وملفات تعريف الارتباط</h2>
+    {GA4_ID ? (<p>مدخلاتك تبقى في متصفحك. يضع الموقع ملفات تعريف ارتباط لقياس الزيارات بأداة Google Analytics (<code>_ga</code>، <code>_ga_{GA4_ID.replace('G-', '')}</code>، 13 شهراً على الأكثر) دون إعلانات{CLARITY_ID && '، ويقاس استقرار الصفحات بأداة Microsoft Clarity دون ملفات تعريف ارتباط'}. التفاصيل في <a href={route('privacy', lang)}>سياسة الخصوصية</a> وصفحة <a href={route('cookies', lang)}>ملفات تعريف الارتباط</a>.</p>) : (<p>مدخلاتك تبقى في متصفحك، ولا يضع الموقع أي ملف تعريف ارتباط (cookies){CLARITY_ID && '، ويقاس استقرار الصفحات بأداة Microsoft Clarity دون ملفات تعريف ارتباط'}. انظر <a href={route('privacy', lang)}>سياسة الخصوصية</a> وصفحة <a href={route('cookies', lang)}>ملفات تعريف الارتباط</a>.</p>)}
+    {/* /gen-legal-pages:terms */}
+    <p>آخر تحديث: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>
