@@ -47,6 +47,15 @@ describe('net et cotisation retraite', () => {
     expect(newLawRate('2027-07-31')).toBe(0.2); expect(newLawRate('2027-08-01')).toBe(0.21); expect(newLawRate('2028-08-01')).toBe(0.22);
     expect(salary({ basic: 10000, transport: 0, other: 0, regime: 'new', date: '2026-10-20' }).pension).toBeCloseTo(1000, 5);
   });
+  it('nouveau régime : assiette = base + بدل السكن النقدي, plafond 45 000 (اللائحة التنفيذية, art. 17)', () => {
+    const r = salary({ basic: 10000, housing: 2500, transport: 700, other: 300, regime: 'new', date: '2026-10-20' });
+    expect(r.base).toBe(12500); expect(r.pension).toBeCloseTo(1250, 5); expect(r.gross).toBe(13500); expect(r.net).toBeCloseTo(12250, 5);
+    expect(salary({ basic: 40000, housing: 10000, transport: 0, other: 0, regime: 'new', date: '2026-10-20' }).pension).toBeCloseTo(4500, 5);
+  });
+  it('régime civil : بدل السكن hors assiette (art. 14 du نظام التقاعد المدني)', () => {
+    const r = salary({ basic: 8010, housing: 2000, transport: 700, other: 0, regime: 'civil' });
+    expect(r.base).toBe(8010); expect(r.pension).toBeCloseTo(720.9, 5); expect(r.gross).toBe(10710);
+  });
 });
 
 describe('مكافأة نهاية الخدمة (art. 84, 85)', () => {

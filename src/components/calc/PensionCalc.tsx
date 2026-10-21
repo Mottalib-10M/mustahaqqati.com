@@ -62,7 +62,7 @@ export default function PensionCalc({ regime: r0 = 'new', salary: s0 = 12000, ye
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
         <form className="grid content-start gap-x-4 gap-y-5 sm:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
           <SelectField id={id('regime')} label="النظام" value={regime} onChange={(v) => { if (isReg(v)) setRegime(v); }} options={REG} className="sm:col-span-2" />
-          <NumberField id={id('salary')} label={regime === 'new' ? 'متوسط الأجر الشهري (أعلى 15 سنة)' : regime === 'privateOld' ? 'متوسط أجر آخر سنتين' : 'آخر راتب أساسي'} value={sal} onChange={setSal} unit="ريال" max={200000} />
+          <NumberField id={id('salary')} label={regime === 'new' ? 'متوسط الأجر الشهري (أعلى 15 سنة)' : regime === 'privateOld' ? 'متوسط أجر آخر سنتين' : 'آخر راتب أساسي'} value={sal} onChange={setSal} unit="ريال" max={200000} help={regime === 'new' ? 'الأجر الأساسي مع بدل السكن، كما في سجل اشتراكك' : undefined} />
           <NumberField id={id('years')} label="سنوات الاشتراك أو الخدمة" value={years} onChange={setYears} unit="سنة" max={60} />
           {regime === 'new' && <NumberField id={id('early')} label="سنوات التقاعد قبل السن النظامية" value={early} onChange={setEarly} unit="سنة" max={10} help="صفر إذا تقاعدت عند السن النظامية" />}
         </form>

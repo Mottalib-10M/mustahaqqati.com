@@ -16,12 +16,18 @@ export function newLawRate(dateIso: string): number {
 }
 
 export type Regime = 'civil' | 'new';
-export interface SalaryIn { basic: number; transport: number; other: number; regime: Regime; date?: string }
-export interface SalaryOut { basic: number; transport: number; other: number; gross: number; rate: number; pension: number; net: number }
+/** `housing` : بدل السكن النقدي mensuel. Assiette du nouveau régime = salaire de base + بدل السكن النقدي,
+ *  plafonnée à 45 000 (اللائحة التنفيذية لنظام التأمينات الاجتماعية, art. 17 a-b, أم القرى du 29/12/1445 ;
+ *  نظام التأمينات الاجتماعية, art. 8 §2). Le logement en nature (art. 17 c) n'est pas chiffré ici : le texte
+ *  l'évalue « بما يساوي الأجر أو الراتب الأساس عن شهرين » sans dire sur quelle période. Régime civil :
+ *  salaire de base seul (نظام التقاعد المدني, art. 14). */
+export interface SalaryIn { basic: number; transport: number; other: number; housing?: number; regime: Regime; date?: string }
+export interface SalaryOut { basic: number; transport: number; other: number; housing: number; gross: number; base: number; rate: number; pension: number; net: number }
 export function salary(i: SalaryIn): SalaryOut {
+  const housing = Math.max(0, i.housing ?? 0);
   const rate = i.regime === 'civil' ? P.pension.civil.employee : newLawRate(i.date ?? P.today) / 2;
-  const base = i.regime === 'civil' ? i.basic : Math.min(i.basic, P.pension.newLaw.ceiling);
+  const base = i.regime === 'civil' ? i.basic : Math.min(i.basic + housing, P.pension.newLaw.ceiling);
   const pension = base * rate;
-  const gross = i.basic + i.transport + i.other;
-  return { basic: i.basic, transport: i.transport, other: i.other, gross, rate, pension, net: gross - pension };
+  const gross = i.basic + housing + i.transport + i.other;
+  return { basic: i.basic, transport: i.transport, other: i.other, housing, gross, base, rate, pension, net: gross - pension };
 }
