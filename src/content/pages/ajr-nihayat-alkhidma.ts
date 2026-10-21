@@ -9,7 +9,7 @@ const calc = (h: Helpers, wage: number) => h.EOS.eos({ wage, years: Y, reason: '
 export default definePage({
   id: 'ajr-nihayat-alkhidma', group: 'khidma', order: 3,
   tool: { kind: 'eos', props: { basic: BASIC, allowances: HOUSING + TRANSPORT, years: Y, months: 0, reason: 'employer' } },
-  related: ['nihayat-alkhidma', 'istiqala', 'jadwal-nihayat-alkhidma', 'alquwwa-alqahira'],
+  related: ['nihayat-alkhidma', 'istiqala', 'badal-alsakan', 'jadwal-nihayat-alkhidma', 'alquwwa-alqahira'],
   sources: ['boeLabor', 'boeCivilService'],
   slug: 'ajr-nihayat-alkhidma', nav: 'الأجر الذي تحسب عليه المكافأة', card: 'الأجر الأساسي والأجر الفعلي في المادة 2، والأجر الأخير في المادة 84، واستبعاد العمولات بالاتفاق.',
   title: 'أجر مكافأة نهاية الخدمة: الأساسي أم الفعلي مع البدلات؟',
