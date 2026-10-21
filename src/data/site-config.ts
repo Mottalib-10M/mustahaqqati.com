@@ -1,5 +1,5 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://sa-baremes-publics.example";
+export const SITE_URL = "https://mustahaqqati.com";
 export const SITE_NAMES: Record<string, string> = {"ar": "مستحقاتي"};
 export const LANG_TAGS: Record<string, string> = {"ar": "ar-SA"};
 export const OG_LOCALES: Record<string, string> = {"ar": "ar_SA"};
@@ -16,7 +16,7 @@ export const AUTHOR_DESC: Record<string, string> = {"ar": "تقرأ Radif Partne
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"ar": ["سلم رواتب الموظفين العام", "سلم رواتب الوظائف التعليمية", "مكافأة نهاية الخدمة في نظام العمل السعودي", "برنامج حساب المواطن", "التقاعد والتأمينات الاجتماعية"]};
-export const CONTACT_EMAIL = "contact@sa-baremes-publics.example";
+export const CONTACT_EMAIL = "contact@mustahaqqati.com";
 export const THEME_COLOR = '#006C35';
 export const LOGO_SYMBOL = 'SR';
 export const BING_VERIFY_CODE = '';
@@ -66,7 +66,7 @@ export const LEGAL: LegalIdentity = {
 };
 
 /** Champs sans lesquels le site ne doit pas être mis en ligne. */
-export const LEGAL_REQUIRED: Array<keyof LegalIdentity> = ['entityName', 'legalForm', 'street', 'postalCode', 'city'];
+export const LEGAL_REQUIRED: Array<keyof LegalIdentity> = ['entityName', 'street', 'postalCode', 'city'];  // legalForm vide : publication à titre personnel, comme les sites en ligne
 
 /** Profils publics de l'auteur (schema.org sameAs). Laisser vide si aucun. */
 export const AUTHOR_SAME_AS: string[] = [];

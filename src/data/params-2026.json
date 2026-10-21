@@ -223,6 +223,46 @@
     12
    ]
   },
+  "eos": {
+   "minYears": 10,
+   "brackets": [
+    10,
+    16,
+    21,
+    26,
+    31
+   ],
+   "perYear": {
+    "musaid": [
+     800,
+     1100,
+     1500,
+     2000,
+     3000
+    ],
+    "mumaris": [
+     900,
+     1200,
+     1600,
+     2100,
+     3100
+    ],
+    "mutaqaddim": [
+     1000,
+     1300,
+     1700,
+     2200,
+     3200
+    ],
+    "khabir": [
+     1100,
+     1500,
+     2000,
+     2500,
+     3500
+    ]
+   }
+  },
   "names": {
    "musaid": "مساعد معلم / معلم",
    "mumaris": "معلم ممارس",
@@ -657,9 +697,9 @@
  "sources": {
   "iauGeneral": {
    "label": {
-    "ar": "سلم رواتب الموظفين العام المعتمد بالأمر الكريم رقم (4097/م ب) وتاريخ 1432/6/25هـ، نسخة الإدارة العامة للموارد البشرية بجامعة الإمام عبدالرحمن بن فيصل"
+    "ar": "سلم رواتب الموظفين العام المعتمد بالأمر الكريم رقم (4097/م ب) وتاريخ 1432/6/25هـ، نسخة الإدارة العامة للموارد البشرية بجامعة الإمام عبدالرحمن بن فيصل كما حفظها أرشيف الإنترنت بتاريخ 2025/12/05م"
    },
-   "url": "https://www.iau.edu.sa/sites/default/files/resources/employees_general_salaries_0.pdf"
+   "url": "https://web.archive.org/web/20251205055723/https://www.iau.edu.sa/sites/default/files/resources/employees_general_salaries_0.pdf"
   },
   "psauGeneral": {
    "label": {
@@ -677,7 +717,7 @@
    "label": {
     "ar": "سلم رواتب وعلاوات الوظائف التعليمية، وزارة التعليم"
    },
-   "url": "https://www.moe.gov.sa/ar/aboutus/aboutministry/RPRLibrary/%D8%B3%D9%84%D9%85%20%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf"
+   "url": "https://www.moe.gov.sa/ar/aboutus/aboutministry/RPRLibrary/%D8%B3%D9%84%D9%85%20%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D9%8A%D9%94%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf"
   },
   "spaTeachers": {
    "label": {
@@ -699,39 +739,39 @@
   },
   "boeLabor": {
    "label": {
-    "ar": "نظام العمل (المرسوم الملكي م/51 وتاريخ 23/8/1426هـ وتعديلاته)، هيئة الخبراء بمجلس الوزراء"
+    "ar": "نظام العمل (المرسوم الملكي م/51 وتاريخ 23/8/1426هـ وتعديلاته)، هيئة الخبراء بمجلس الوزراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/01/28م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1"
+   "url": "https://web.archive.org/web/20260128140901/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1"
   },
   "boeCivilService": {
    "label": {
-    "ar": "نظام الخدمة المدنية (المرسوم الملكي م/49 وتاريخ 10/7/1397هـ)، هيئة الخبراء"
+    "ar": "نظام الخدمة المدنية (المرسوم الملكي م/49 وتاريخ 10/7/1397هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/02/25م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/32f651e6-2976-439c-b418-a9a700f23fb2/1"
+   "url": "https://web.archive.org/web/20260225030000/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/32f651e6-2976-439c-b418-a9a700f23fb2/1"
   },
   "boeSocialNew": {
    "label": {
-    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/273 وتاريخ 26/12/1445هـ)، هيئة الخبراء"
+    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/273 وتاريخ 26/12/1445هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2025/12/12م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1"
+   "url": "https://web.archive.org/web/20251212215735/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1"
   },
   "boeSocialOld": {
    "label": {
-    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/33 وتاريخ 3/9/1421هـ)، هيئة الخبراء"
+    "ar": "نظام التأمينات الاجتماعية (المرسوم الملكي م/33 وتاريخ 3/9/1421هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/02/09م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8ff3cd90-e466-4bf9-a071-a9a700f2a70d/1"
+   "url": "https://web.archive.org/web/20260209120854/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8ff3cd90-e466-4bf9-a071-a9a700f2a70d/1"
   },
   "boeCivilPension": {
    "label": {
-    "ar": "نظام التقاعد المدني (المرسوم الملكي م/41 وتاريخ 29/7/1393هـ)، هيئة الخبراء"
+    "ar": "نظام التقاعد المدني (المرسوم الملكي م/41 وتاريخ 29/7/1393هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/01/23م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/859d4e56-627b-4766-a7aa-a9a700f23975/1"
+   "url": "https://web.archive.org/web/20260123205718/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/859d4e56-627b-4766-a7aa-a9a700f23975/1"
   },
   "boeMilPension": {
    "label": {
-    "ar": "نظام التقاعد العسكري (المرسوم الملكي م/24 وتاريخ 5/4/1395هـ)، هيئة الخبراء"
+    "ar": "نظام التقاعد العسكري (المرسوم الملكي م/24 وتاريخ 5/4/1395هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2025/10/15م"
    },
-   "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0838afd4-ca76-4b4a-b1d1-a9a700f22afd/1"
+   "url": "https://web.archive.org/web/20251015112946/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0838afd4-ca76-4b4a-b1d1-a9a700f22afd/1"
   },
   "caCalculator": {
    "label": {

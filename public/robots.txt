@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://sa-baremes-publics.example/sitemap-index.xml
+Sitemap: https://mustahaqqati.com/sitemap-index.xml

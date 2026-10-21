@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Construit src/data/params-2026.json à partir des barèmes officiels lus le 2026-10-20.
+"""laws.boe.gov.sa et iau.edu.sa ne répondent ni aux scripts ni à Chrome hors du Royaume (2026-10-21) :
+les liens pointent vers la copie datée de web.archive.org de la page officielle, texte relu.
+Construit src/data/params-2026.json à partir des barèmes officiels lus le 2026-10-20.
 Chaque barème est une progression arithmétique (premier échelon + علاوة × (échelon − 1)) : on stocke les
 deux nombres et le nombre d'échelons, et ce script vérifie chaque cellule contre la table officielle
 recopiée ci-dessous (OFFICIEL_*), lue sur les PDF cités dans « sources »."""
@@ -10,6 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 GENERAL = {1:(3000,135,15),2:(3430,165,15),3:(3945,190,15),4:(4530,230,15),5:(5240,265,15),6:(6065,305,15),7:(7010,365,15),8:(8010,415,15),9:(9275,470,15),10:(10275,510,15),11:(11815,530,14),12:(13435,570,13),13:(15180,605,12),14:(17015,700,11),15:(20855,865,10)}
 OFFICIEL_GENERAL_DERNIER = {1:4890,2:5740,3:6605,4:7750,5:8950,6:10335,7:12120,8:13820,9:15855,10:17415,11:18705,12:20275,13:21835,14:24015,15:28640}
 # Barème des emplois d'enseignement (rangs de la لائحة الوظائف التعليمية, en vigueur le 10/11/1441 H), PDF moe.gov.sa
+# (URL corrigée le 2026-10-21 : le nom de fichier s'écrit avec ي + hamza, l'ancienne graphie ئ répondait 404 ; toutes les cases relues)
 TEACH = {
  'musaid':     [(5200,300,6),(7000,320,6),(8920,340,6),(10960,360,6),(13120,380,6),(15400,400,6)],
  'mumaris':    [(7570,500,6),(10570,520,6),(13690,540,6),(16930,540,6),(20170,540,3)],
@@ -35,6 +38,11 @@ P = {
    'ranks': {r: {'levels': [{'first': a, 'inc': i, 'steps': n} for (a,i,n) in L]} for r,L in TEACH.items()},
    # لائحة الوظائف التعليمية, art. 30 : مرتبة équivalente du سلم العام pour les indemnités, par rang et niveau
    'equiv': {'musaid': [5, 6, 7, 7, 8, 8], 'mumaris': [7, 8, 9, 9, 10], 'mutaqaddim': [8, 9, 10, 11], 'khabir': [10, 11, 12]},
+   # لائحة الوظائف التعليمية, art. 29 (tableau, PDF hrsd.gov.sa p. 22, lu dans Chrome le 2026-10-21) : مكافأة نهاية الخدمة
+   # en riyals par année complète, selon le total des années de service (tranche) et le rang ; 10 ans au moins sauf décès ou invalidité.
+   'eos': {'minYears': 10, 'brackets': [10, 16, 21, 26, 31],
+           'perYear': {'musaid': [800, 1100, 1500, 2000, 3000], 'mumaris': [900, 1200, 1600, 2100, 3100],
+                       'mutaqaddim': [1000, 1300, 1700, 2200, 3200], 'khabir': [1100, 1500, 2000, 2500, 3500]}},
    'names': {'musaid': 'مساعد معلم / معلم', 'mumaris': 'معلم ممارس', 'mutaqaddim': 'معلم متقدم', 'khabir': 'معلم خبير'},
  },
  # لائحة الحقوق والمزايا المالية, art. 36 : بدل الانتقال الشهري par مرتبة (la 15e n'y figure pas)
@@ -83,19 +91,19 @@ P = {
    ],
  },
  'sources': {
-   'iauGeneral': S('سلم رواتب الموظفين العام المعتمد بالأمر الكريم رقم (4097/م ب) وتاريخ 1432/6/25هـ، نسخة الإدارة العامة للموارد البشرية بجامعة الإمام عبدالرحمن بن فيصل', 'https://www.iau.edu.sa/sites/default/files/resources/employees_general_salaries_0.pdf'),
+   'iauGeneral': S('سلم رواتب الموظفين العام المعتمد بالأمر الكريم رقم (4097/م ب) وتاريخ 1432/6/25هـ، نسخة الإدارة العامة للموارد البشرية بجامعة الإمام عبدالرحمن بن فيصل كما حفظها أرشيف الإنترنت بتاريخ 2025/12/05م', 'https://web.archive.org/web/20251205055723/https://www.iau.edu.sa/sites/default/files/resources/employees_general_salaries_0.pdf'),
    'psauGeneral': S('سلم رواتب الموظفين، نسخة عمادة الموارد البشرية بجامعة الأمير سطام بن عبدالعزيز (ديسمبر 2024)', 'https://www.psau.edu.sa/dhr//sitesuploads/dhr/2024-12/%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D9%85%D9%88%D8%B8%D9%81%D9%8A%D9%86.pdf'),
    'spa1432': S('واس، 26/6/1432هـ: اعتماد 18 سلماً وجدولاً لرواتب الموظفين المدنيين اعتباراً من 25/6/1432هـ', 'https://www.spa.gov.sa/897663'),
-   'moeTeachers': S('سلم رواتب وعلاوات الوظائف التعليمية، وزارة التعليم', 'https://www.moe.gov.sa/ar/aboutus/aboutministry/RPRLibrary/%D8%B3%D9%84%D9%85%20%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf'),
+   'moeTeachers': S('سلم رواتب وعلاوات الوظائف التعليمية، وزارة التعليم', 'https://www.moe.gov.sa/ar/aboutus/aboutministry/RPRLibrary/%D8%B3%D9%84%D9%85%20%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D9%8A%D9%94%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF.pdf'),
    'spaTeachers': S('واس، 8/11/1441هـ: بدء العمل بلائحة الوظائف التعليمية في 10/11/1441هـ', 'https://www.spa.gov.sa/2103364'),
    'hrsdTeachers': S('لائحة الوظائف التعليمية، وزارة الموارد البشرية والتنمية الاجتماعية', 'https://www.hrsd.gov.sa/sites/default/files/2024-05/%D9%84%D8%A7%D8%A6%D8%AD%D8%A9%20%D8%A7%D9%84%D9%88%D8%B8%D8%A7%D8%A6%D9%81%20%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9.pdf'),
    'moeHuquq': S('لائحة الحقوق والمزايا المالية (طبعة 1439هـ)، مكتبة وزارة التعليم', 'https://www.moe.gov.sa/en/aboutus/aboutministry/RPRLibrary/%D9%84%D8%A7%D9%8A%D9%94%D8%AD%D8%A9%20%D8%A7%D9%84%D8%AD%D9%82%D9%88%D9%82%20%D9%88%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D9%8A%D8%A7%20-%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9.pdf'),
-   'boeLabor': S('نظام العمل (المرسوم الملكي م/51 وتاريخ 23/8/1426هـ وتعديلاته)، هيئة الخبراء بمجلس الوزراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1'),
-   'boeCivilService': S('نظام الخدمة المدنية (المرسوم الملكي م/49 وتاريخ 10/7/1397هـ)، هيئة الخبراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/32f651e6-2976-439c-b418-a9a700f23fb2/1'),
-   'boeSocialNew': S('نظام التأمينات الاجتماعية (المرسوم الملكي م/273 وتاريخ 26/12/1445هـ)، هيئة الخبراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1'),
-   'boeSocialOld': S('نظام التأمينات الاجتماعية (المرسوم الملكي م/33 وتاريخ 3/9/1421هـ)، هيئة الخبراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8ff3cd90-e466-4bf9-a071-a9a700f2a70d/1'),
-   'boeCivilPension': S('نظام التقاعد المدني (المرسوم الملكي م/41 وتاريخ 29/7/1393هـ)، هيئة الخبراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/859d4e56-627b-4766-a7aa-a9a700f23975/1'),
-   'boeMilPension': S('نظام التقاعد العسكري (المرسوم الملكي م/24 وتاريخ 5/4/1395هـ)، هيئة الخبراء', 'https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0838afd4-ca76-4b4a-b1d1-a9a700f22afd/1'),
+   'boeLabor': S('نظام العمل (المرسوم الملكي م/51 وتاريخ 23/8/1426هـ وتعديلاته)، هيئة الخبراء بمجلس الوزراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/01/28م', 'https://web.archive.org/web/20260128140901/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1'),
+   'boeCivilService': S('نظام الخدمة المدنية (المرسوم الملكي م/49 وتاريخ 10/7/1397هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/02/25م', 'https://web.archive.org/web/20260225030000/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/32f651e6-2976-439c-b418-a9a700f23fb2/1'),
+   'boeSocialNew': S('نظام التأمينات الاجتماعية (المرسوم الملكي م/273 وتاريخ 26/12/1445هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2025/12/12م', 'https://web.archive.org/web/20251212215735/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/eaee8a20-3a54-4aaf-b0d9-b1ad00998962/1'),
+   'boeSocialOld': S('نظام التأمينات الاجتماعية (المرسوم الملكي م/33 وتاريخ 3/9/1421هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/02/09م', 'https://web.archive.org/web/20260209120854/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8ff3cd90-e466-4bf9-a071-a9a700f2a70d/1'),
+   'boeCivilPension': S('نظام التقاعد المدني (المرسوم الملكي م/41 وتاريخ 29/7/1393هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2026/01/23م', 'https://web.archive.org/web/20260123205718/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/859d4e56-627b-4766-a7aa-a9a700f23975/1'),
+   'boeMilPension': S('نظام التقاعد العسكري (المرسوم الملكي م/24 وتاريخ 5/4/1395هـ)، هيئة الخبراء، نسخة صفحة النظام في موقع هيئة الخبراء كما حفظها أرشيف الإنترنت بتاريخ 2025/10/15م', 'https://web.archive.org/web/20251015112946/https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0838afd4-ca76-4b4a-b1d1-a9a700f22afd/1'),
    'caCalculator': S('الحاسبة التقديرية لبرنامج حساب المواطن', 'https://portal.ca.gov.sa/calculator'),
    'spaCa2026': S('واس، 11/6/1447هـ: تمديد الدعم الإضافي لحساب المواطن حتى نهاية 2026م', 'https://spa.gov.sa/N2457029'),
    'spaCaOct': S('واس، 30/4/1448هـ: إيداع دفعة أكتوبر 2026 لحساب المواطن', 'https://www.spa.gov.sa/N2698253'),

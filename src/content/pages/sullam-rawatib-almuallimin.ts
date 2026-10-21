@@ -7,7 +7,7 @@ const over = (h: Helpers) => h.table(['الرتبة', 'المستويات', 'أ�
 export default definePage({
   id: 'sullam-rawatib-almuallimin', group: 'muallimin', order: 1,
   tool: { kind: 'salary', props: { mode: 'teacher', rank: 'mumaris', level: 1, step: 2 } },
-  related: ['muallim-mumaris', 'musaid-muallim', 'muallim-mutaqaddim', 'muallim-khabir', 'sullam-rawatib-almuwazafin'],
+  related: ['muallim-mumaris', 'musaid-muallim', 'muallim-mutaqaddim', 'muallim-khabir', 'nihayat-khidma-almuallimin', 'sullam-rawatib-almuwazafin'],
   sources: ['moeTeachers', 'spaTeachers', 'hrsdTeachers', 'moeHuquq'],
   slug: 'sullam-rawatib-almuallimin', nav: 'سلم رواتب المعلمين', card: 'الرتب الأربع بمستوياتها ودرجاتها، والتعيين حسب المؤهل، والانتقال بين المستويات.',
   title: 'سلم رواتب المعلمين 1448: الرتب والمستويات والدرجات',

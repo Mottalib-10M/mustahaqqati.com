@@ -99,3 +99,20 @@ import { teacherEquivGrade } from '../src/lib/engine/scales';
 describe('équivalence enseignants (art. 30)', () => {
   it('rang × niveau → مرتبة', () => { expect(teacherEquivGrade('musaid', 1)).toBe(5); expect(teacherEquivGrade('mumaris', 1)).toBe(7); expect(teacherEquivGrade('khabir', 3)).toBe(12); expect(transportFor(teacherEquivGrade('mumaris', 2))).toBe(700); expect(transportFor(teacherEquivGrade('musaid', 1))).toBe(500); });
 });
+
+import { teacherEos } from '../src/lib/engine/teacher-eos';
+describe('مكافأة نهاية الخدمة للمعلمين (لائحة الوظائف التعليمية، المادة 29)', () => {
+  // Tableau de l'art. 29 (PDF hrsd.gov.sa, p. 22), lu le 2026-10-21 : 800 / 1100 / 1500 / 2000 / 3000 pour معلم/مساعد معلم.
+  it('rien sous dix ans complets', () => {
+    expect(teacherEos('khabir', 9.9).amount).toBeNull();
+    expect(teacherEos('khabir', 9.9).eligible).toBe(false);
+  });
+  it('années complètes × montant de la tranche', () => {
+    expect(teacherEos('musaid', 10).amount).toBe(8000);
+    expect(teacherEos('mumaris', 15).amount).toBe(13500);
+    expect(teacherEos('mumaris', 16).amount).toBe(19200);
+    expect(teacherEos('mutaqaddim', 30.7).amount).toBe(30 * 2200);
+    expect(teacherEos('khabir', 31).amount).toBe(31 * 3500);
+    expect(teacherEos('musaid', 26).perYear).toBe(2000);
+  });
+});

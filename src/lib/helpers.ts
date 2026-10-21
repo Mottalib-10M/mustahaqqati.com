@@ -7,6 +7,7 @@ import * as SAL from './engine/salary';
 import * as EOS from './engine/eos';
 import * as CA from './engine/ca';
 import * as PEN from './engine/pension';
+import * as TEOS from './engine/teacher-eos';
 import { formatMoney, formatNumber, formatPercent, formatDecimal, displayDate, hijriDate } from './format';
 
 const esc = (s: string | number) => String(s).replace(/&(?!(?:[a-z]+|#\d+);)/g, '&amp;').replace(/</g, '&lt;');
@@ -48,7 +49,7 @@ export function helpers(strict = false) {
   /** Fin de service pour un salaire et une durée, par motif. */
   const eosRow = (wage: number, years: number) => { const e = EOS.eos({ wage, years, reason: 'employer' }); return [num(years), m(e.full), m(e.full * EOS.resignShare(years))]; };
   return {
-    P, TODAY, SC, SAL, EOS, CA, PEN, ORD, bandId,
+    P, TODAY, SC, SAL, EOS, TEOS, CA, PEN, ORD, bandId,
     a, m, pc, date, hdate, num, dec: (n: number, d = 2) => formatDecimal(n, d),
     table, g, tch, netG, gradeTable, generalFullTable, rankTable, eosRow,
     /** Lien vers une source officielle du fichier de paramètres. */

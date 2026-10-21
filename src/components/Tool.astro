@@ -7,6 +7,7 @@ import PensionCalc from './calc/PensionCalc';
 import MiniResign from './calc/MiniResign';
 import MiniTimeline from './calc/MiniTimeline';
 import MiniFloor from './calc/MiniFloor';
+import MiniTeacherEos from './calc/MiniTeacherEos';
 import { route } from '../i18n/routes';
 import type { ToolDef } from '../lib/guide-types';
 interface Props { tool: ToolDef; primary?: boolean; idPrefix?: string }
@@ -21,4 +22,5 @@ const id = idPrefix ?? (primary ? 'r' : 'm');
 {tool.kind === 'pension' && <PensionCalc client:load {...props} methodHref={methodHref} idPrefix={id} />}
 {tool.kind === 'resign' && <MiniResign client:load {...props} idPrefix={id} fullHref={route('nihayat-alkhidma', 'ar')} />}
 {tool.kind === 'timeline' && <MiniTimeline client:load {...props} idPrefix={id} fullHref={route('home', 'ar')} />}
+{tool.kind === 'teacherEos' && <MiniTeacherEos client:load {...props} idPrefix={id} fullHref={route('sullam-rawatib-almuallimin', 'ar')} />}
 {tool.kind === 'floor' && <MiniFloor client:load {...props} idPrefix={id} fullHref={route('hasibat-altaqaud', 'ar')} />}

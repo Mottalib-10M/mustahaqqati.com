@@ -7,7 +7,8 @@ export type RankId = 'musaid' | 'mumaris' | 'mutaqaddim' | 'khabir';
 export interface Params {
   retrieved_at: string; today: string; hijriToday: string;
   general: { decree: string; from_hijri: string; from: string; grades: Record<string, Prog> };
-  teachers: { from_hijri: string; from: string; ranks: Record<RankId, { levels: Prog[] }>; names: Record<RankId, string>; equiv: Record<RankId, number[]> };
+  teachers: { from_hijri: string; from: string; ranks: Record<RankId, { levels: Prog[] }>; names: Record<RankId, string>; equiv: Record<RankId, number[]>;
+    eos: { minYears: number; brackets: number[]; perYear: Record<RankId, number[]> } };
   transport: Band[]; mission: Band[];
   missionAbroad: Array<{ from: number; to: number; c: number; b: number; a: number; high: number }>;
   missionRules: { housedFed: number; housed: number; extraTransportShare: number; abroadTransport1415: number; maxDays: number; yearCap551: number };
